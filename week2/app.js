@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const catRoute = require('./routes/catRoute');
@@ -15,4 +15,4 @@ app.use(express.static('uploads'))
 app.use('/cat', catRoute)
 app.use('/user', userRoute)
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`) );
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
