@@ -1,9 +1,6 @@
 // userController
 'use strict';
-const {users, getuser, getUser}= require('../models/userModel');
-
-
-
+const {users,  getUser}= require('../models/userModel');
 const user_list_get = (req, res) => {
   res.json(users);
 };
