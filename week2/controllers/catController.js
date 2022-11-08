@@ -75,5 +75,5 @@ module.exports = {
   cat_get,
   cat_post,
   cat_put,
-  cat_delete
+  cat_delete,
 };
