@@ -9,7 +9,7 @@ const cat_list_get = async (req, res) => {
 
 const cat_get = async (req, res) => {
   const cat = await getCat(req.params.id);
-  if(cat.length > 0) {
+  if (cat.length > 0) {
     res.json(cat.pop());
   } else {
     res.send('virhe');
@@ -27,7 +27,7 @@ const cat_post = async (req, res) => {
   ];
 
   const result = await addCat(data);
-  if(result.affectedRows > 0) {
+  if (result.affectedRows > 0) {
     res.json({
       message: 'cat added',
       cat_id: result.insertId,
@@ -48,7 +48,7 @@ const cat_put = async (req, res) => {
   ];
 
   const result = await updateCat(data);
-  if(result.affectedRows > 0) {
+  if (result.affectedRows > 0) {
     res.json({
       message: 'cat modified',
 
@@ -60,7 +60,7 @@ const cat_put = async (req, res) => {
 
 const cat_delete = async (req, res) => {
   const result = await deleteCat(req.params.id);
-  if(result.affectedRows > 0) {
+  if (result.affectedRows > 0) {
     res.json({
       message: 'cat deleted',
     });
