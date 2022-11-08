@@ -6,8 +6,6 @@ const router = express.Router()
 
 router.get('/', user_list_get);
 router.get('/:id', user_get);
-
-
 // POST method route
 router.post('/', user_post);
 router.put('/', (req, res) => {
