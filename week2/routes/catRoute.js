@@ -10,6 +10,7 @@ router.route('/').
     post(upload.single('cat'), cat_post).
     put(cat_put);
 
-router.route('/:id').get(cat_get).
+router.route('/:id').
+    get(cat_get).
     delete(cat_delete);
     module.exports = router;

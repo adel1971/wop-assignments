@@ -9,8 +9,8 @@ router.get('/:id', user_get);
 // POST method route
 router.post('/', user_post);
 router.put('/', (req, res) => {
-  res.send('From this endpoint you can put users')
-})
+  res.send('From this endpoint you can put users');
+});
 router.delete('/', (req, res) => {
   res.send('From this endpoint you can delete users')
 })
