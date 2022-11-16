@@ -49,10 +49,11 @@ app.post('/login',
     });
 
 app.get('/logout', (req, res) => {
-  req.logout();
+  req.logout(() =>{
   res.redirect('/');
-});
+  });
 
+});
 app.get('/setCookie/:clr', (req, res) => {
   res.cookie('color', req.params.clr).send('eväste asetettu');
 });
