@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "state-management": "^0.2.2"
+  }
+}
