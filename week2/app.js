@@ -5,7 +5,8 @@ const cors = require('cors');
 const authRoute = require('./routes/authRoute')
 const catRoute = require('./routes/catRoute');
 const userRoute = require('./routes/userRoute');
-const {httpError} = require("./utils/errors");
+const {httpError} = require('./utils/errors');
+const passport = require("./utils/paas");
 const app = express();
 const port = 3000;
 
@@ -32,3 +33,4 @@ app.use((err, req, res, next)=>{
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+

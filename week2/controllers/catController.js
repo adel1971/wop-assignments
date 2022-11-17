@@ -1,3 +1,5 @@
+'use strict'
+// catController
 const {getCat, getAllCats, addCat, updateCat, deleteCat} = require(
     '../models/catModel');
 const {httpError} = require('../utils/errors');
