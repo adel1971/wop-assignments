@@ -111,6 +111,7 @@ const checkToken = (req, res, next) => {
     next(httpError('token not valid', 403));
   } else {
     res.json({ user: req.user });
+
   }
 };
 module.exports = {

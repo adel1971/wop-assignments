@@ -14,7 +14,7 @@ post(body('name').isLength({min: 3}).escape(),
     user_post).
 put(user_put);
 
-router.route('/:id').get(user_get).delete(user_delete);
+router.route('/token').get(user_get).delete(user_delete);
 
-router.get('/token', checkToken);
+router.get('/:id', checkToken);
 module.exports = router;
