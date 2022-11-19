@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 // catController
 const {getCat, getAllCats, addCat, updateCat, deleteCat} = require(
     '../models/catModel');
 const {httpError} = require('../utils/errors');
-const {validationResult} = require("express-validator");
+const {validationResult} = require('express-validator');
 
 const cat_list_get = async (req, res, next) => {
   try {
@@ -45,6 +45,7 @@ const cat_post = async (req, res, next) => {
       next(httpError('Invalid data', 400));
       return;
     }
+
     console.log('cat_post', req.body, req.file);
     const data = [
       req.body.name,
@@ -102,9 +103,7 @@ const cat_put = async (req, res, next) => {
       ];
     }
 
-    console.log('cat_put', data);
-
-    const result = await updateCat(data, next);
+    const result = await updateCat(data, req.user, next);
     if (result.affectedRows < 1) {
       next(httpError('No cat modified', 400));
       return;

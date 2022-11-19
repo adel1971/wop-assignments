@@ -1,7 +1,6 @@
 const {getUser, getAllUsers, addUser, deleteUser, updateUser} = require('../models/userModel');
 const {validationResult} = require('express-validator');
 const {httpError} = require('../utils/errors');
-
 const user_list_get = async (req, res, next) => {
   try {
     const users = await getAllUsers(next);
