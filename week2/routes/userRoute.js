@@ -1,7 +1,7 @@
 'use strict';
 // userRoute
 const express = require('express');
-const {user_list_get, user_get, user_post, user_put, user_delete} = require(
+const {user_list_get, user_get, user_post, user_put, user_delete, checkToken} = require(
     '../controllers/userController');
 const {body} = require('express-validator');
 const router = express.Router();
@@ -16,4 +16,5 @@ put(user_put);
 
 router.route('/:id').get(user_get).delete(user_delete);
 
+router.get('/token', checkToken);
 module.exports = router;
