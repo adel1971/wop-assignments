@@ -50,7 +50,7 @@ const cat_post = async (req, res, next) => {
       req.body.name,
       req.body.birthdate,
       req.body.weight,
-      req.body.user_id,
+      req.user.user_id,
       req.file.filename,
     ];
 
@@ -88,7 +88,7 @@ const cat_put = async (req, res, next) => {
       req.body.weight,
       req.body.owner,
       req.body.id,
-        req.user.user_id,
+      req.user.user_id,
     ];
 
     const result = await updateCat(data, next);

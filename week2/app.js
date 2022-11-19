@@ -17,9 +17,8 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(passport.initialize());
 app.use(express.static('uploads'));
 app.use('/auth', authRoute);
-app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute)
-
-app.use('/user', passport.authenticate('jwt', {session: false}), userRoute)
+app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
+app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 app.use((req, res, next)=>{
   const err = httpError('Not found', 404);
