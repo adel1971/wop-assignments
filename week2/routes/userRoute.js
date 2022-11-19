@@ -13,8 +13,8 @@ post(body('name').isLength({min: 3}).escape(),
     body('passwd').matches(/(?=.*\p{Lu}).{8,}/u),
     user_post).
 put(user_put);
+router.get('/token', checkToken);
+router.route('/:id').get(user_get).delete(user_delete);
 
-router.route('/token').get(user_get).delete(user_delete);
 
-router.get('/:id', checkToken);
 module.exports = router;

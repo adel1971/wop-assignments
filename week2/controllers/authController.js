@@ -22,7 +22,7 @@ const login = (req, res,next) => {
       const token = jwt.sign(user, 'tw34ttrityikku');
       return res.json({user,token});
     });
-  })(req, res, next);
+      })(req, res, next);
 };
 
 module.exports = {
