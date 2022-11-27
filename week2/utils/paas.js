@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const {getUserLogin} = require('../models/userModel');
@@ -16,7 +17,7 @@ passport.use(new Strategy(
         if (user === undefined) {
           return done(null, false, {message: 'Incorrect email.'});
         }
-        if (user.password !== password) {
+        if (!bcrypt.compareSync(password, user.password)) {
           return done(null, false, {message: 'Incorrect password.'});
         }
         delete user.password;
@@ -26,12 +27,11 @@ passport.use(new Strategy(
       }
     }));
 
-
 // TODO: JWT strategy for handling bearer token
 passport.use(new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'tw34ttrityikku',
+      secretOrKey: 'tw34y5ktugijl',
     }, (jwtPayload, done) => {
       console.log('JWTStrategy', jwtPayload);
       done(null, jwtPayload);
