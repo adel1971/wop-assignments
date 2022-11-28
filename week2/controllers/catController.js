@@ -54,13 +54,15 @@ const cat_post = async (req, res, next) => {
     png().
     toFile('./thumbnails/' + req.file.filename);
     const  coords =  await getCoordinates(req.file.path);
+    console.log('coords', coords);
+
     const data = [
       req.body.name,
       req.body.birthdate,
       req.body.weight,
       req.user.user_id,
       req.file.filename,
-      coords,
+      JSON.stringify(coords),
     ];
 
     const result = await addCat(data, next);
@@ -113,6 +115,7 @@ const cat_put = async (req, res, next) => {
       ];
     }
 console.log('cat_put', data);
+
     const result = await updateCat(data, req.user, next);
     if (result.affectedRows < 1) {
       next(httpError('No cat modified', 400));
