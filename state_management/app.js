@@ -50,22 +50,19 @@ app.post('/login',
 
 app.get('/logout', (req, res) => {
   req.logout(() =>{
-  res.redirect('/');
+    res.redirect('/');
   });
 
 });
 app.get('/setCookie/:clr', (req, res) => {
   res.cookie('color', req.params.clr).send('eväste asetettu');
 });
-
 app.get('/getCookie', (req, res) => {
   console.log(req.cookies);
   res.send('color evästeessä lukee ' + req.cookies.color);
 });
-
 app.get('/deleteCookie', (req, res) => {
   res.clearCookie('color');
   res.send('eväste poistettu');
 });
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
