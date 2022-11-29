@@ -5,7 +5,8 @@ const {getCat, getAllCats, addCat, updateCat, deleteCat} = require(
 const {httpError} = require('../utils/errors');
 const {validationResult} = require('express-validator');
 const sharp = require('sharp');
-const {getCoordinates} = require("../utils/imageMeta");
+const {getCoordinates} = require('../utils/imageMeta');
+
 const cat_list_get = async (req, res, next) => {
   try {
     const kissat = await getAllCats(next);
@@ -53,8 +54,6 @@ const cat_post = async (req, res, next) => {
     resize(160, 160).
     png().
     toFile('./thumbnails/' + req.file.filename);
-    const  coords =  await getCoordinates(req.file.path);
-
 
     const data = [
       req.body.name,
@@ -62,15 +61,15 @@ const cat_post = async (req, res, next) => {
       req.body.weight,
       req.user.user_id,
       req.file.filename,
-      JSON.stringify(coords),
     ];
+
 
     const result = await addCat(data, next);
     if (result.affectedRows < 1) {
       next(httpError('Invalid data', 400));
       return;
     }
-    if (thumbnail) {
+    if(thumbnail) {
       res.json({
         message: 'cat added',
         cat_id: result.insertId,
@@ -114,7 +113,8 @@ const cat_put = async (req, res, next) => {
         req.user.user_id,
       ];
     }
-console.log('cat_put', data);
+
+    console.log('cat_put', data);
 
     const result = await updateCat(data, req.user, next);
     if (result.affectedRows < 1) {
